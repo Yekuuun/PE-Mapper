@@ -9,6 +9,7 @@
 
 //function declaration.
 BYTE* ManualRead(IN const LPSTR filePath, OUT DWORD &loadedSize);
+VOID showBanner();
 
 //program entry point.
 int main(int argc, char* argv[])
@@ -20,25 +21,23 @@ int main(int argc, char* argv[])
     }
 
 #ifdef _WIN64
-    std::cout << "64-bit version" << "\n";
+    std::cout << "[*] 64-bit version ok" << "\n";
 #else
-    std::cout << "32-bit version not for this case." << "\n";
     return EXIT_FAILURE;
 #endif
 
     //program beginning.
     const LPSTR filePath = argv[1];
 
-    std::cout << "[*] Path to file : " << filePath << std::endl;
-
     DWORD loadedSize = 0;
-
     BYTE* rawPE = ManualRead(filePath, loadedSize);
     if(rawPE == nullptr)
     {
         return EXIT_FAILURE;
     }
 
+    showBanner();
+    std::cout << "[*] Path to file : " << filePath << std::endl;
     std::cout << "[*] Sizeof loaded file :" << loadedSize << " bytes" << std::endl;
 
     if(!GetPEInformations(rawPE, loadedSize))
@@ -47,7 +46,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    std::cout << "[*] Operation successfully made." << std::endl;
+    std::cout << "[*] Operation successfully made. \n\n[:)] Ciao." << std::endl;
     free(rawPE);
     return EXIT_SUCCESS;
 }
@@ -100,4 +99,24 @@ BYTE* ManualRead(IN const LPSTR filePath, OUT DWORD &loadedSize)
     loadedSize = sizeOfFile;
     CloseHandle(hFile);
     return rawPE;
+}
+
+/**
+ * Showbanner function to display project banner.
+ */
+VOID showBanner() {
+    std::cout << "--------------------------------------------------------" << std::endl;
+    const std::string pink = "\033[38;5;205m";
+    const std::string reset = "\033[0m";
+
+    std::cout << pink << R"(
+    ____  ______     __  ___                           
+   / __ \/ ____/    /  |/  /___ _____  ____  ___  _____
+  / /_/ / __/______/ /|_/ / __ `/ __ \/ __ \/ _ \/ ___/
+ / ____/ /__/_____/ /  / / /_/ / /_/ / /_/ /  __/ /    
+/_/   /_____/    /_/  /_/\__,_/ .___/ .___/\___/_/     
+                             /_/   /_/                 
+    )" << reset << std::endl;
+
+    std::cout << "-----------------A base x64 PE file mapper---------------\n" << std::endl;
 }

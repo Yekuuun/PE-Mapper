@@ -118,6 +118,7 @@ BOOL LoadImports(BYTE* image, PIMAGE_NT_HEADERS nt)
     //ptr to IMAGE_IMPORT_DESCRIPTOR
     PIMAGE_IMPORT_DESCRIPTOR pImageDesc = (PIMAGE_IMPORT_DESCRIPTOR)(imports.VirtualAddress + (FIELD_PTR)image); //offset calculation => address of first module loaded.
 
+    std::cout << "\n-----------------------LOADED IMPORTS--------------------\n" << std::endl;
     //iterating through loaded DLL's.
     while(pImageDesc->Name != NULL)
     {
@@ -150,6 +151,8 @@ BOOL LoadImports(BYTE* image, PIMAGE_NT_HEADERS nt)
 
         pImageDesc++;
     }
+    std::cout << "[*] Successfully loaded imports" << std::endl;
+    std::cout << "\n----------------------------------------------------------\n" << std::endl;
 
     return true;
 }
@@ -181,7 +184,7 @@ BOOL GetPEInformations(BYTE* rawPE, DWORD sizeFile)
         std::cout << "[-] Unable to loadfile into memory." << std::endl;
         return false;
     }
-    std::cout << "[*] Successfully allocated memory with size of image :" << ntH->OptionalHeader.SizeOfImage << std::endl;
+    std::cout << "[*] Successfully allocated memory with size of image : " << ntH->OptionalHeader.SizeOfImage << " bytes " << std::endl;
     
     //mapping sections.
     if(!ManualMap((BYTE*)allocatedMemory, rawPE, ntH))
@@ -217,7 +220,9 @@ BOOL GetPEInformations(BYTE* rawPE, DWORD sizeFile)
         }
         return false;
     }
-    std::cout << "[*] Successfully loaded imports" << std::endl;
 
+    //EXEC FILE into memory ? -> TO DO.
+    
+    VirtualFree(allocatedMemory, 0, MEM_RELEASE);
     return true;
 }

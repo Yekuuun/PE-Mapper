@@ -1,2 +1,2 @@
 # PE-Mapper
-having fun with windows pe files
+manually map PE into memory & display informations.
