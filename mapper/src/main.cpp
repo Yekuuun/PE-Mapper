@@ -23,7 +23,7 @@ int main(int argc, char* argv[])
 #ifdef _WIN64
     std::cout << "[*] 64-bit version ok" << "\n";
 #else
-    return EXIT_FAILURE;
+    std::cout << "[*] 32-bit version ok" << "\n";
 #endif
 
     //program beginning.
