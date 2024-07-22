@@ -13,7 +13,7 @@
 
 **Manually map PE into memory & display informations.**
 
-This repository was created due to my interest for windows internals & learning about malwares who often are related to PE files. The main purpose here is to learn who to pick a PE file & manually mapping it into mempry learning manipulating RVA addresses & complex structures of a PE.
+This repository was created due to my interest for windows internals & learning about malwares who often are related to PE files. The main purpose here is to learn who to pick a PE file & manually mapping it into memory learning manipulating RVA addresses & complex structures of a PE.
 
 ---
 
