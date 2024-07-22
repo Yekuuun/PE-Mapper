@@ -1,0 +1,4 @@
+*.exe
+/mapper/build
+/.vscode
+/.idea
