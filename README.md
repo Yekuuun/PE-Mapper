@@ -28,6 +28,16 @@ This repository was created due to my interest for windows internals & learning 
 
 ---
 
+### Building
+
+- clone project : `https://github.com/Yekuuun/PE-Mapper.git`
+- go to `/mapper` & create build dir `mkdir build`
+- go to `/build` & run `cmake ..`
+- build with `cmake --build .`
+- run program using `./pe-mapper <path_to_pe_file>`
+
+---
+
 ### Thanks to : 
 https://github.com/hasherezade/malware_training_vol1
 
