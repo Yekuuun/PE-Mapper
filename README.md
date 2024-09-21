@@ -39,8 +39,8 @@ This repository was created due to my interest for windows internals & learning 
 ---
 
 ### Thanks to : 
-https://github.com/hasherezade/malware_training_vol1
 
-https://github.com/adamhlt/Manual-DLL-Loader
+[MALWARE_TRAINING_VOL1](https://github.com/hasherezade/malware_training_vol1) <br> <br>
+[MANUAL_DLL_LOADER](https://github.com/adamhlt/Manual-DLL-Loader)
 
 
